@@ -1,0 +1,75 @@
+{
+    "name" : "Cha cha cha",
+    "author" : "Josean Log",
+    "mainNote" : "F",
+    "duration" : "2:00:15;00",
+    "phrases" : [
+        {   
+            "lyrics" : "...",
+            "chords" :[
+                {
+                    "note" : 5,
+                    "mode" : 0,
+                    "offset" : 0
+                },
+                {
+                    "note" : 2,
+                    "mode" : 1,
+                    "offset" : 5
+                },
+                {
+                    "note" : 9,
+                    "mode" : 1,
+                    "offset" : 10
+                },
+                {
+                    "note" : 9,
+                    "mode" : 0,
+                    "offset" : 15
+                }
+            ],
+            "duration" : {
+                "startAt" : "0:00:15;00",
+                "finishAt" : "0:00:25;00"
+            }
+        },
+        {   
+            "lyrics" : "... Dame de tu vida y de tu tiempo",
+            "chords" :[
+                {
+                    "note" : 5,
+                    "mode" : 0,
+                    "offset" : 0
+                },
+                {
+                    "note" : 2,
+                    "mode" : 1,
+                    "offset" : 5
+                }
+            ],
+            "duration" : {
+                "startAt" : "0:00:15;00",
+                "finishAt" : "0:00:25;00"
+            }
+        },
+        {   
+            "lyrics" : "Suficientes para ver",
+            "chords" :[
+                {
+                    "note" : 9,
+                    "mode" : 1,
+                    "offset" : 10
+                },
+                {
+                    "note" : 9,
+                    "mode" : 0,
+                    "offset" : 15
+                }
+            ],
+            "duration" : {
+                "startAt" : "0:00:15;00",
+                "finishAt" : "0:00:25;00"
+            }
+        }
+    ]
+}
