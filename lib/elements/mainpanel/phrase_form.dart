@@ -13,7 +13,8 @@ class PhraseForm extends StatefulWidget {
 
 class _PhraseFormState extends State<PhraseForm> {
   double _selectedPosition = 1;
-  int _selectedNote = 0;
+  Note _selectedNote = indexedNotes[0];
+  Mode _selectedMode = indexedModes[0];
   String _letra = '';
 
   List<Chord> _acordes = [
@@ -22,8 +23,10 @@ class _PhraseFormState extends State<PhraseForm> {
     Chord(note: 5, mode: 0, offset: 280),
   ];
 
-  Chord getNewChord() =>
-      Chord(note: _selectedNote, mode: 0, offset: (_selectedPosition * 10));
+  Chord getNewChord() => Chord(
+      note: _selectedNote.index,
+      mode: _selectedMode.index,
+      offset: (_selectedPosition * 10));
 
   @override
   Widget build(BuildContext context) {
@@ -50,10 +53,62 @@ class _PhraseFormState extends State<PhraseForm> {
             ),
             Text(
               _letra,
+              textScaleFactor: 1.0,
               style: TextStyle(
                   fontFamily: 'RobotoMono',
-                  fontSize: 18.0 * ui.getScale(),
+                  fontSize: 16.0 * ui.getScale(),
                   color: Colors.blueGrey[900]),
+            ),
+            TextFormField(
+              maxLength: 34,
+              onChanged: (String value) => {
+                setState(() {
+                  _letra = value;
+                })
+              },
+              style: TextStyle(
+                  fontSize: 18.0 * ui.getScale(), color: Colors.blueGrey[900]),
+              decoration: const InputDecoration(
+                border: UnderlineInputBorder(),
+                labelText: 'Ingresa la letra',
+              ),
+            ),
+            Wrap(
+              children: [
+                DropdownButton<Note>(
+                  value: _selectedNote,
+                  onChanged: (Note? value) {
+                    setState(() {
+                      _selectedNote = value!;
+                    });
+                  },
+                  items: indexedNotes
+                      .map<DropdownMenuItem<Note>>(
+                        (Note note) => DropdownMenuItem<Note>(
+                          value: note,
+                          child: Text(notes[note.index]),
+                        ),
+                      )
+                      .toList(),
+                ),
+                DropdownButton<Mode>(
+                  value: _selectedMode,
+                  onChanged: (Mode? value) {
+                    setState(() {
+                      _selectedMode = value!;
+                    });
+                  },
+                  items: indexedModes
+                      .map<DropdownMenuItem<Mode>>(
+                        (Mode mode) => DropdownMenuItem<Mode>(
+                          value: mode,
+                          child: Text(modes[mode.index]),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ],
+              // TODO: HACER UNICOS LOS ACORDES
             ),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 20, 0, 0),
@@ -69,25 +124,15 @@ class _PhraseFormState extends State<PhraseForm> {
                 },
               ),
             ),
-            TextFormField(
-              maxLength: 30,
-              onChanged: (String value) => {
-                setState(() {
-                  _letra = value;
-                })
-              },
-              style: TextStyle(
-                  fontSize: 18.0 * ui.getScale(), color: Colors.blueGrey[900]),
-              decoration: const InputDecoration(
-                border: UnderlineInputBorder(),
-                labelText: 'Ingresa la letra',
-              ),
-            ),
             Consumer(
               builder: (context, value, child) => MaterialButton(
-                  child: const Text('Agregar acorde'),
-                  onPressed: () =>
-                      {setState(() => _acordes.add(getNewChord()))}),
+                child: const Text('Agregar acorde'),
+                onPressed: () => setState(
+                  () => _acordes.add(
+                    getNewChord(),
+                  ),
+                ),
+              ),
             )
           ],
         ),

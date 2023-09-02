@@ -34,8 +34,11 @@ class _PhraseWidgetState extends State<PhraseWidget> {
           Consumer<UiModel>(
             builder: (context, ui, child) => Text(
               widget.phrase.lyrics,
+              textScaleFactor: 1.0,
               style: TextStyle(
-                  fontSize: 18.0 * ui.getScale(), color: Colors.blueGrey[900]),
+                  fontFamily: 'RobotoMono',
+                  fontSize: 16 * ui.getScale(),
+                  color: Colors.blueGrey[900]),
             ),
           ),
         ],

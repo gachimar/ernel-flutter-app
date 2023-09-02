@@ -38,7 +38,7 @@ SongModel exampleSong = songModelFromJson('''{
             }
         },
         {   
-            "lyrics" : "    ... Dame de tu vida y de tu tiempo",
+            "lyrics" :".. Dame de tu vida y de tu tiempo",
             "chords" :[
                 {
                     "note" : 5,
@@ -57,7 +57,7 @@ SongModel exampleSong = songModelFromJson('''{
             }
         },
         {   
-            "lyrics" : "              Suficientes para ver",
+            "lyrics" : "          Suficientes para ver",
             "chords" :[
                 {
                     "note" : 9,
@@ -101,7 +101,7 @@ List<String> notes = [
 ];
 
 List<String> modes = [
-  '',
+  'M',
   'm',
   '7',
   'm7',
@@ -122,6 +122,13 @@ List<Note> indexedNotes = [
   Note(index: 11),
 ];
 
+List<Mode> indexedModes = [
+  Mode(index: 0),
+  Mode(index: 1),
+  Mode(index: 2),
+  Mode(index: 3)
+];
+
 // ignore: camel_case_types
 
 // Nota para la lista de notas principales.
@@ -129,6 +136,13 @@ class Note extends Object {
   int index;
 
   Note({this.index = 0});
+}
+
+// Nota para la lista de notas principales.
+class Mode extends Object {
+  int index;
+
+  Mode({this.index = 0});
 }
 
 class Song {

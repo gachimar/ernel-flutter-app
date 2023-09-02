@@ -39,12 +39,17 @@ class _NoteLabelState extends State<NoteLabel> {
   Widget build(BuildContext context) {
     return Consumer<UiModel>(
       builder: (context, ui, child) => Padding(
-        padding: EdgeInsets.fromLTRB(
-            widget.note.offset * ui.getScale(), 40, 0, 5),
+        padding:
+            EdgeInsets.fromLTRB(widget.note.offset * ui.getScale(), 40, 0, 5),
         // child: Text('${notes[widget.note!.index]} ${traspNote().name}'),
         child: Text(
-          '${notes[traspNote().note]}${modes[traspNote().mode]}',
-          style: TextStyle(fontSize: 18.0 * ui.getScale(), color: Colors.pink),
+          textScaleFactor: 1.0,
+          '${notes[traspNote().note]}${modes[traspNote().mode] == 'M' ? '' : modes[traspNote().mode]}',
+          style: TextStyle(
+            fontSize: 17.0 * ui.getScale(),
+            color: Colors.pink,
+            fontFamily: 'RobotoMono',
+          ),
         ),
       ),
     );

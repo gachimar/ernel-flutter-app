@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               const NotesDropdown(),
-              const SliderExample(),
+              // const SliderExample(),
               Expanded(
                 child: Consumer<MainSongModel>(
                   builder: (builder, mainSongProvider, child) => ListView(
