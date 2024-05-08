@@ -7,104 +7,47 @@ SongModel exampleSong = songModelFromJson('''{
     "author" : "Josean Log",
     "mainNote" : "F",
     "duration" : "2:00:15;00",
-    "phrases" : [
-        {   
-            "lyrics" : "[ Intro ] ...",
-            "chords" :[
-                {
-                    "note" : 5,
-                    "mode" : 0,
-                    "offset" : 0.0
-                },
-                {
-                    "note" : 2,
-                    "mode" : 1,
-                    "offset" : 50.0
-                },
-                {
-                    "note" : 9,
-                    "mode" : 1,
-                    "offset" : 170.0
-                },
-                {
-                    "note" : 9,
-                    "mode" : 0,
-                    "offset" : 280.0
-                }
-            ],
-            "duration" : {
-                "startAt" : "0:00:15;00",
-                "finishAt" : "0:00:25;00"
-            }
-        },
-        {   
-            "lyrics" :".. Dame de tu vida y de tu tiempo",
-            "chords" :[
-                {
-                    "note" : 5,
-                    "mode" : 0,
-                    "offset" : 0.0
-                },
-                {
-                    "note" : 2,
-                    "mode" : 1,
-                    "offset" : 280.0
-                }
-            ],
-            "duration" : {
-                "startAt" : "0:00:15;00",
-                "finishAt" : "0:00:25;00"
-            }
-        },
-        {   
-            "lyrics" : "          Suficientes para ver",
-            "chords" :[
-                {
-                    "note" : 9,
-                    "mode" : 1,
-                    "offset" : 0.0
-                },
-                {
-                    "note" : 9,
-                    "mode" : 0,
-                    "offset" : 100.0
-                }
-                ,
-                {
-                    "note" : 5,
-                    "mode" : 0,
-                    "offset" : 280.0
-                }
-            ],
-            "duration" : {
-                "startAt" : "0:00:15;00",
-                "finishAt" : "0:00:25;00"
-            }
-        }
-    ]
+    "phrases" : []
 }''');
 
 /// Notas musicales.
 List<String> notes = [
-  'Do',
-  'Do#',
-  'Re',
-  'Re#',
-  'Mi',
-  'Fa',
-  'Fa#',
-  'Sol',
-  'Sol#',
-  'La',
-  'La#',
-  'Si'
+  'C',
+  'C#',
+  'D',
+  'D#',
+  'E',
+  'F',
+  'F#',
+  'G',
+  'G#',
+  'A',
+  'A#',
+  'B'
 ];
 
-List<String> modes = [
-  'M',
-  'm',
+/// Nivel.
+List<String> niveles = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
   '7',
-  'm7',
+];
+
+List<String> modes = ['Mayor', 'Menor'];
+
+List<String> alteraciones = [
+  '',
+  '(7)',
+  'M',
+  '-',
+  '#',
+  'b',
+  'o',
+  '+',
 ];
 
 List<Note> indexedNotes = [
@@ -129,6 +72,24 @@ List<Mode> indexedModes = [
   Mode(index: 3)
 ];
 
+List<Nivel> indexedNiveles = [
+  Nivel(index: 0),
+  Nivel(index: 1),
+  Nivel(index: 2),
+  Nivel(index: 3),
+  Nivel(index: 4),
+  Nivel(index: 5),
+  Nivel(index: 6),
+  Nivel(index: 7)
+];
+
+List<Alteracion> indexedAlteraciones = [
+  Alteracion(index: 0),
+  Alteracion(index: 1),
+  Alteracion(index: 2),
+  Alteracion(index: 3)
+];
+
 // ignore: camel_case_types
 
 // Nota para la lista de notas principales.
@@ -139,10 +100,24 @@ class Note extends Object {
 }
 
 // Nota para la lista de notas principales.
+class Nivel extends Object {
+  int index;
+
+  Nivel({this.index = 0});
+}
+
+// Nota para la lista de notas principales.
 class Mode extends Object {
   int index;
 
   Mode({this.index = 0});
+}
+
+// Nota para la lista de notas principales.
+class Alteracion extends Object {
+  int index;
+
+  Alteracion({this.index = 0});
 }
 
 class Song {

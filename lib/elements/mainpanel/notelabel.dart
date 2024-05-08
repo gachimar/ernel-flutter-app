@@ -7,11 +7,13 @@ class NoteLabel extends StatefulWidget {
   const NoteLabel({
     super.key,
     required this.note,
-    this.mainNote,
+    required this.mainNote,
+    this.labelColor = Colors.red,
   });
 
   final Chord note;
-  final Note? mainNote;
+  final Note mainNote;
+  final Color labelColor;
 
   @override
   State<NoteLabel> createState() => _NoteLabelState();
@@ -47,7 +49,7 @@ class _NoteLabelState extends State<NoteLabel> {
           '${notes[traspNote().note]}${modes[traspNote().mode] == 'M' ? '' : modes[traspNote().mode]}',
           style: TextStyle(
             fontSize: 17.0 * ui.getScale(),
-            color: Colors.pink,
+            color: widget.labelColor,
             fontFamily: 'RobotoMono',
           ),
         ),

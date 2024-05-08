@@ -17,4 +17,9 @@ class MainSongModel with ChangeNotifier {
     _currentSong.phrases.add(newPhrase);
     notifyListeners();
   }
+
+  void removeLastPhrase() {
+    _currentSong.phrases.removeLast();
+    notifyListeners();
+  }
 }
