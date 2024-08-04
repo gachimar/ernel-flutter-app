@@ -26,8 +26,8 @@ List<String> notes = [
   'B'
 ];
 
-/// Nivel.
-List<String> niveles = [
+/// Grado.
+List<String> grados = [
   '1',
   '2',
   '3',
@@ -37,9 +37,12 @@ List<String> niveles = [
   '7',
 ];
 
-List<String> modes = ['Mayor', 'Menor'];
+List<String> modes = [
+  'Mayor',
+  // 'Menor',
+];
 
-List<String> alteraciones = [
+List<String> tipos = [
   '',
   '(7)',
   'M',
@@ -72,15 +75,15 @@ List<Mode> indexedModes = [
   Mode(index: 3)
 ];
 
-List<Nivel> indexedNiveles = [
-  Nivel(index: 0),
-  Nivel(index: 1),
-  Nivel(index: 2),
-  Nivel(index: 3),
-  Nivel(index: 4),
-  Nivel(index: 5),
-  Nivel(index: 6),
-  Nivel(index: 7)
+List<Grado> indexedGrados = [
+  Grado(index: 0),
+  Grado(index: 1),
+  Grado(index: 2),
+  Grado(index: 3),
+  Grado(index: 4),
+  Grado(index: 5),
+  Grado(index: 6),
+  Grado(index: 7)
 ];
 
 List<Alteracion> indexedAlteraciones = [
@@ -100,10 +103,10 @@ class Note extends Object {
 }
 
 // Nota para la lista de notas principales.
-class Nivel extends Object {
+class Grado extends Object {
   int index;
 
-  Nivel({this.index = 0});
+  Grado({this.index = 0});
 }
 
 // Nota para la lista de notas principales.

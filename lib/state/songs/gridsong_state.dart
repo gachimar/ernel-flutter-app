@@ -20,12 +20,16 @@ class MainGridSongProvider with ChangeNotifier {
 
   GridSong? getCurrentSong() => _currentSong;
 
-  void setCurrentSong(GridSong newSong) {
+  void setCurrentSong(
+    GridSong newSong,
+  ) {
     _currentSong = newSong;
     notifyListeners();
   }
 
-  void addSeccion(String seccionTono) {
+  void addSeccion(
+    String seccionTono,
+  ) {
     Seccion newSeccion = Seccion(tono: seccionTono, compases: [
       [
         Tono(tono: ''),
@@ -64,18 +68,24 @@ class MainGridSongProvider with ChangeNotifier {
   //   return '';
   // }
 
-  void createNewSong(String name) {
+  void createNewSong(
+    String name,
+  ) {
     String songJson = getGridSong(name);
     _currentSong = gridSongFromJson(songJson);
     setPreferencesSong(songJson);
     notifyListeners();
   }
 
-  void setPreferencesSong(String song) async {
+  void setPreferencesSong(
+    String song,
+  ) async {
     await _sharedPrefs.setString('current_song', song);
   }
 
-  void addCompas(int seccionIndex) {
+  void addCompas(
+    int seccionIndex,
+  ) {
     _currentSong!.secciones[seccionIndex].compases.add([
       Tono(tono: ""),
       Tono(tono: ""),
@@ -89,16 +99,48 @@ class MainGridSongProvider with ChangeNotifier {
     notifyListeners();
   }
 
+  void removeLastCompas(
+    int seccionIndex,
+  ) {
+    if (_currentSong!.secciones[seccionIndex].compases.length > 1) {
+      _currentSong!.secciones[seccionIndex].compases.removeLast();
+      notifyListeners();
+    }
+  }
+
   void setTono(
-      int seccionIndex, int compasIndex, int tonoIndex, Tono nuevoTono) {
+    int seccionIndex,
+    int compasIndex,
+    int tonoIndex,
+    Tono nuevoTono,
+  ) {
     _currentSong!.secciones[seccionIndex].compases[compasIndex][tonoIndex] =
         nuevoTono;
     print('lo hice chamo');
     notifyListeners();
   }
 
-  void removeLastSeccion() {
-    _currentSong!.secciones.removeLast();
+  void setSeccionTono(
+    int seccionIndex,
+    String nuevoTono,
+  ) {
+    _currentSong!.secciones[seccionIndex].tono = nuevoTono;
+    print('lo hice chamo');
     notifyListeners();
+  }
+
+  void removeSeccion(
+    int seccionIndex,
+  ) {
+    _currentSong!.secciones.removeAt(seccionIndex);
+    notifyListeners();
+  }
+
+  void saveSong() async {
+    if (_currentSong == null) {
+      return;
+    }
+    String stringCurrentSong = gridSongToJson(_currentSong!);
+    await _sharedPrefs.setString('current_song', stringCurrentSong);
   }
 }

@@ -1,4 +1,4 @@
-var acordes = {
+var acordes_list = {
   "A Mayor": {
     "1": "A",
     "1(7)": "A7",
